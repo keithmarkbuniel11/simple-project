@@ -35,14 +35,21 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $msg ='';
+
         $service = new Service();
         $service->icon = $request->icon;
         $service->title = $request->title;
         $service->details = $request->details;
         $service->save();
 
+        if($service) {
+            $msg = 'Successfully Saved! '.$service;
+        }else{
+            $msg = 'Failed!';
+        }
 
-        return $service;
+        return $msg;
     }
 
     /**

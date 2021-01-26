@@ -5,9 +5,9 @@
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label text-md-right">Icon</label>
+            <label for="email" class="col-md-4 col-form-label text-md-right">Image Url</label>
             <div class="col-md-6">
-                <input id="email" type="text" class="form-control " autofocus v-model="form.icon">
+                <input id="email" type="text" class="form-control " autofocus v-model="form.image_url">
             </div>
         </div>
 
@@ -15,13 +15,6 @@
             <label for="email" class="col-md-4 col-form-label text-md-right">Title</label>
             <div class="col-md-6">
                 <input id="email" type="text" class="form-control"  v-model="form.title">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label text-md-right">Details</label>
-            <div class="col-md-6">
-                <input id="email" type="text" class="form-control" v-model="form.details">
             </div>
         </div>
 
@@ -41,17 +34,15 @@ export default {
     data(){
         return{
             form: {
-                icon: null,
+                image_url: null,
                 title: null,
-                details: null
-                 
             }
         }
     },
     methods: {
         submit(){
             
-            axios.post('/api/services',this.form) 
+            axios.post('/api/portfolio',this.form) 
             .then(function (response) {
 
                 console.log('working');

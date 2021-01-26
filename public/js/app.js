@@ -1907,27 +1907,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       form: {
-        icon: null,
-        title: null,
-        details: null
+        image_url: null,
+        title: null
       }
     };
   },
   methods: {
     submit: function submit() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/services', this.form).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/portfolio', this.form).then(function (response) {
         console.log('working');
         console.log(response);
       })["catch"](function (error) {
@@ -1953,7 +1945,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
 //
 //
 //
@@ -2048,21 +2039,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      services: []
+      portfolios: []
     };
   },
   created: function created() {
-    this.getServices();
+    this.getPortfolios();
   },
   methods: {
-    getServices: function getServices() {
+    getPortfolios: function getPortfolios() {
       var $this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/services').then(function (response) {
-        $this.services = response.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/portfolio').then(function (response) {
+        $this.portfolios = response.data;
         console.log(response);
       })["catch"](function (err) {
         return console.log(err);
@@ -2926,7 +2918,7 @@ var render = function() {
           staticClass: "col-md-4 col-form-label text-md-right",
           attrs: { for: "email" }
         },
-        [_vm._v("Icon")]
+        [_vm._v("Image Url")]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
@@ -2935,19 +2927,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.form.icon,
-              expression: "form.icon"
+              value: _vm.form.image_url,
+              expression: "form.image_url"
             }
           ],
           staticClass: "form-control ",
           attrs: { id: "email", type: "text", autofocus: "" },
-          domProps: { value: _vm.form.icon },
+          domProps: { value: _vm.form.image_url },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.form, "icon", $event.target.value)
+              _vm.$set(_vm.form, "image_url", $event.target.value)
             }
           }
         })
@@ -2983,41 +2975,6 @@ var render = function() {
                 return
               }
               _vm.$set(_vm.form, "title", $event.target.value)
-            }
-          }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "email" }
-        },
-        [_vm._v("Details")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.details,
-              expression: "form.details"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "email", type: "text" },
-          domProps: { value: _vm.form.details },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "details", $event.target.value)
             }
           }
         })
@@ -3242,33 +3199,38 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("section", { staticClass: "page-section", attrs: { id: "services" } }, [
-      _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "container-fluid p-0" }, [
         _c("h2", { staticClass: "text-center mt-0" }, [_vm._v("Portfolios")]),
         _vm._v(" "),
         _c("hr", { staticClass: "divider my-4" }),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "row" },
-          _vm._l(_vm.services, function(service) {
+          { staticClass: "row no-gutters" },
+          _vm._l(_vm.portfolios, function(portfolio) {
             return _c(
               "div",
-              { key: service.id, staticClass: "col-lg-3 col-md-6 text-center" },
+              { key: portfolio.id, staticClass: "col-lg-4 col-sm-6" },
               [
-                _c("div", { staticClass: "mt-5" }, [
-                  _c("i", {
-                    staticClass: "text-primary mb-4 fa-5x",
-                    class: service.icon
-                  }),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "h4 mb-2" }, [
-                    _vm._v(_vm._s(service.title))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-muted mb-0" }, [
-                    _vm._v(_vm._s(service.details))
-                  ])
-                ])
+                _c(
+                  "a",
+                  {
+                    staticClass: "portfolio-box",
+                    attrs: { href: portfolio.image_url }
+                  },
+                  [
+                    _c("img", {
+                      staticStyle: { width: "250px", height: "250px" },
+                      attrs: { src: portfolio.image_url }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "portfolio-box-caption" }, [
+                      _c("h3", { staticClass: "h4 mb-2" }, [
+                        _vm._v(_vm._s(portfolio.title))
+                      ])
+                    ])
+                  ]
+                )
               ]
             )
           }),
@@ -3368,85 +3330,87 @@ var render = function() {
     _c(
       "nav",
       {
-        staticClass: "navbar navbar-expand-lg navbar-light fixed-top py-3",
+        staticClass: "navbar navbar-expand-lg navbar-dark fixed-top py-3",
+        staticStyle: { background: "#000" },
         attrs: { id: "mainNav" }
       },
       [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "a",
-            {
-              staticClass: "navbar-brand js-scroll-trigger",
-              attrs: { href: "#page-top" }
-            },
-            [_vm._v("Start Bootstrap")]
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarResponsive" }
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav ml-auto my-2 my-lg-0" }, [
-                _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _c(
+              "router-link",
+              {
+                class: "navbar-brand js-scroll-trigger",
+                attrs: { to: { name: "home" } }
+              },
+              [_vm._v("Simple Project")]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbarResponsive" }
+              },
+              [
+                _c("ul", { staticClass: "navbar-nav ml-auto my-2 my-lg-0" }, [
                   _c(
-                    "a",
-                    {
-                      staticClass: "nav-link js-scroll-trigger",
-                      attrs: { href: "#about" }
-                    },
-                    [
-                      _c("router-link", { attrs: { to: { name: "home" } } }, [
-                        _vm._v("Home")
-                      ])
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link js-scroll-trigger",
-                      attrs: { href: "#services" }
-                    },
+                    "li",
+                    { staticClass: "nav-item" },
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: { name: "services-create" } } },
+                        {
+                          class: "nav-link js-scroll-trigger",
+                          attrs: { to: { name: "home" } }
+                        },
+                        [_vm._v("Home")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          class: "nav-link js-scroll-trigger",
+                          attrs: { to: { name: "services-create" } }
+                        },
                         [_vm._v("Services")]
                       )
                     ],
                     1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "nav-item" }, [
+                  ),
+                  _vm._v(" "),
                   _c(
-                    "a",
-                    {
-                      staticClass: "nav-link js-scroll-trigger",
-                      attrs: { href: "#services" }
-                    },
+                    "li",
+                    { staticClass: "nav-item" },
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: { name: "portfolio-create" } } },
+                        {
+                          class: "nav-link js-scroll-trigger",
+                          attrs: { to: { name: "portfolio-create" } }
+                        },
                         [_vm._v("Portfolio")]
                       )
                     ],
                     1
                   )
                 ])
-              ])
-            ]
-          )
-        ])
+              ]
+            )
+          ],
+          1
+        )
       ]
     ),
     _vm._v(" "),

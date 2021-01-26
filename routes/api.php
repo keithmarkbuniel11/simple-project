@@ -19,5 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+//
+//Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('home');
+
+
 Route::resource('/services', 'App\Http\Controllers\ServiceController');
-// Route::resource('services', [App\Http\Controllers\ServiceController::class]);
+Route::resource('/portfolio', 'App\Http\Controllers\PortfolioController');

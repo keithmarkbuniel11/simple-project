@@ -14,7 +14,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        return Portfolio::all();
     }
 
     /**
@@ -35,7 +35,20 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $msg ='';
+
+        $portfolio = new Portfolio();
+        $portfolio->image_url = $request->image_url;
+        $portfolio->title = $request->title;
+        $portfolio->save();
+
+        if($portfolio) {
+            $msg = 'Successfully Saved! '.$portfolio;
+        }else{
+            $msg = 'Failed!';
+        }
+
+        return $msg;
     }
 
     /**
