@@ -8,8 +8,7 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about"><router-link :to="{ name: 'home' }">Home</router-link></a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services"><router-link :to="{ name: 'services-create' }">Services</router-link></a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services"><router-link :to="{ name: 'portfolio-create' }">Portfolio</router-link></a></li>
                     </ul>
                 </div>
             </div>

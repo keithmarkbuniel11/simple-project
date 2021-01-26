@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import App from './components/layout/App'
 import Home from './components/Home'
 import CreateService from './components/backend/Services/Create'
+import CreatPortfolio from './components/backend/Portfolio/Create'
 
 const router = new VueRouter({
     mode: 'history',
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: '/services/create',
             name: 'services-create',
             component: CreateService
+        },
+        {
+            path: '/portfolio/create',
+            name: 'portfolio-create',
+            component: CreatPortfolio
         }
     ],
 });
